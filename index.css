@@ -1,0 +1,10 @@
+#game-canvas {
+   /* background-image: url('./Connect4Board.png'); */
+   /* background-repeat: no-repeat; */
+   border: 2px solid red;
+   background-color: lightgray;
+}
+
+div {
+   text-align: center;
+}
