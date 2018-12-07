@@ -32,6 +32,9 @@ document.addEventListener("DOMContentLoaded", () => {
          column = 6;
       }
       dropToken(board, column);
+      if (isWin(board, "R")) {
+         console.log("You've won");
+      }
       console.log(board);
    };
 
@@ -47,53 +50,41 @@ document.addEventListener("DOMContentLoaded", () => {
       for (let i = 5; i >= 0; i--) {
          if (board[i][column] === null) {
             board[i][column] = "R";
+            context.beginPath();
+            debugger 
+            context.fillStyle = "red";
+            context.arc(100, 75, 50, 0, 2*Math.PI);
+            context.fill();
+            context.stroke();
             break;
          }
       }
    }
 
    function isWin(board, token) {
+      // horizontal win 
       for (let j = 0; j < 6; j++) {
          for (let k = 0; k < 4; k++) {
-            if (board[j][k] === token && board[j][k+1] === token && board[j][k+2] === token) {
+            if (board[j][k] === token && board[j][k+1] === token && board[j][k+2] === token && board[j][k+3] === token) {
                return true;
             }            
          }         
       }
+   
+      // vertical win 
+      for (let l = 5; l > 3; l--) {
+         for (let m = 0; m < 7; m++) {
+            if (board[l][m] === token && board[l-1][m] === token && board[l-2][m] === token && board[l-3][m] === token) {
+               return true;
+            }
+         }
+      }
+
+      // diagonal / win
+      // for (let d1 = 0; d1 < 4; )
       return false;
    }
 
-   // function game() {
-   //    canvas.onclick = function(event) {
-   //    let x = event.clientX;
-   //    console.log(column);
-   // };
 
-   //    dropToken(board, column);
-   //    console.log(board);
-
-   // }
-   // if (isWin(board, "R") === false) {
-   //    canvas.onclick = function (event) {
-   //       let x = event.clientX;
-   //       if (75 < x && x < 150) {
-   //          column = 0;
-   //       } else if (170 < x && x < 240) {
-   //          column = 1;
-   //       } else if (260 < x && x < 330) {
-   //          column = 2;
-   //       } else if (350 < x && x < 420) {
-   //          column = 3;
-   //       } else if (440 < x && x < 510) {
-   //          column = 4;
-   //       } else if (530 < x && x < 600) {
-   //          column = 5;
-   //       } else if (620 < x && x < 690) {
-   //          column = 6;
-   //       } 
-   //    };
-   //    dropToken(board, column);
-   // }
-   //  console.log(board);
 
 });
