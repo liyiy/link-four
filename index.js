@@ -46,16 +46,36 @@ document.addEventListener("DOMContentLoaded", () => {
       return board;
    }
 
-   function dropToken(board, column) {
+   const drawToken = (row, column) => {
+      let x;
+      let y;
+      if (row === 5) {
+         y = 600;
+      } else if (row === 0) {
+         y = 200;
+      } else {
+         y = (200 + (row * 80));
+      }
+
+      if (column === 0) {
+         x = 105;
+      } else if (column === 6) {
+         x = 645;
+      } else {
+         x = (105 + (column * 90));
+      }
+      context.beginPath();
+      context.arc(x, y, 35, 0, 2*Math.PI);
+      context.fillStyle = "red";
+      context.fill();
+      context.closePath();
+   }
+
+   const dropToken = (board, column) => {
       for (let i = 5; i >= 0; i--) {
          if (board[i][column] === null) {
             board[i][column] = "R";
-            context.beginPath();
-            debugger 
-            context.fillStyle = "red";
-            context.arc(100, 75, 50, 0, 2*Math.PI);
-            context.fill();
-            context.stroke();
+            drawToken(i, column);
             break;
          }
       }
