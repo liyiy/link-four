@@ -14,13 +14,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
    let column;
    let board = newBoard();
+   let currPlayer = "red";
 
    canvas.onclick = function(event) {
       let x = event.clientX;
       let y = event.clientY;
       offsetLeft = canvas.offsetLeft + 70;
       offsetTop = canvas.offsetTop + 160;
-   
+      
+      if (currPlayer === "red") {
+         currPlayer = "yellow";
+      } else {
+         currPlayer = "red";
+      }
 
       if (offsetLeft < x && x < offsetLeft + 70) {
          column = 0;
@@ -37,12 +43,12 @@ document.addEventListener("DOMContentLoaded", () => {
       } else if (offsetLeft + 540 < x && x < offsetLeft + 610) {
          column = 6;
       }
-      dropToken(board, column, offsetLeft, offsetTop);
-      if (isWin(board, "R")) {
-         context.fillText("You win :)", 300, 100);
+      dropToken(board, column, offsetLeft, offsetTop, currPlayer);
+      if (isWin(board, currPlayer)) {
+         context.fillStyle = "black";
+         context.fillText(`${currPlayer} wins :)`, 300, 100);
       }
       console.log(board);
-      console.log(canvas.offsetLeft, "offsetleft", offsetLeft, x, y);
    };
 
 
@@ -54,7 +60,7 @@ document.addEventListener("DOMContentLoaded", () => {
       return board;
    }
 
-   const drawToken = (row, column, offsetLeft, offsetTop) => {
+   const drawToken = (row, column, offsetLeft, offsetTop, color) => {
       let x;
       let y;
 
@@ -91,16 +97,16 @@ document.addEventListener("DOMContentLoaded", () => {
       console.log(x, y);
       context.beginPath();
       context.arc(x, y, 35, 0, 2*Math.PI);
-      context.fillStyle = "red";
+      context.fillStyle = color;
       context.fill();
       context.closePath();
    }
 
-   const dropToken = (board, column, offsetLeft, offsetTop) => {
+   const dropToken = (board, column, offsetLeft, offsetTop, currPlayer) => {
       for (let i = 5; i >= 0; i--) {
          if (board[i][column] === null) {
-            board[i][column] = "R";
-            drawToken(i, column, offsetLeft, offsetTop);
+            board[i][column] = currPlayer;
+            drawToken(i, column, offsetLeft, offsetTop, currPlayer);
             break;
          }
       }
