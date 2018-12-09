@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
    context.font = "600 30px Arial";
    context.fillStyle = "white";
-   context.fillText("Which mode? Press 1 for two player", 300, 50);
+   context.fillText("Press 1 for two-player", 225, 50);
 
    addEventListener('keydown', function(e) {
       switch(e.keyCode) {
@@ -67,6 +67,10 @@ document.addEventListener("DOMContentLoaded", () => {
             context.font = "600 30px Arial";
             context.fillStyle = "white";
             context.fillText(`${currPlayer} wins : )`, 300, 100);
+         } else if (isTie(board)) {
+            context.font = "600 30px Arial";
+            context.fillStyle = "white";
+            context.fillText("Tie! : (", 350, 100);
          }
          console.log(board);
       };
@@ -170,6 +174,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
          return false;
       };
+
+      const isTie = (board) => {
+         for (let i = 0; i < 6; i++) {
+            for (let j = 0; j < 7; j++) {
+               if (board[i][j] === null) {
+                  return false;
+               }               
+            } 
+         }
+         return true;
+      };
+
    };
 
    var img = new Image();
