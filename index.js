@@ -132,7 +132,29 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       // diagonal / win
-      // for (let d1 = 0; d1 < 4; )
+      for (let diagRow1 = 5; diagRow1 > 3; diagRow1--) {
+         for (diagCol1 = 0; diagCol1 < 4; diagCol1++) {
+            if (board[diagRow1][diagCol1] === token &&
+                board[diagRow1-1][diagCol1+1] === token &&
+                board[diagRow1-2][diagCol1+2] === token &&
+                board[diagRow1-3][diagCol1+3] === token) {
+                   return true;
+                }
+         }
+      }
+
+      // diagonal \ win 
+      for (let diagRow2 = 5; diagRow2 > 3; diagRow2--) {
+         for (diagCol2 = 6; diagCol2 > 3; diagCol2--) {
+            if (board[diagRow2][diagCol2] === token &&
+                board[diagRow2-1][diagCol2-1] === token &&
+                board[diagRow2-2][diagCol2-2] === token &&
+                board[diagRow2-3][diagCol2-3] === token) {
+                   return true;
+                }
+         }
+      }
+      
       return false;
    }
 

@@ -1,8 +1,16 @@
+
+html {
+   background: url("https://ak3.picdn.net/shutterstock/videos/13851653/thumb/1.jpg");
+   background-size: cover;
+   background-position-x: center;
+}
+
 #game-canvas {
    /* background-image: url('./Connect4Board.png'); */
    /* background-repeat: no-repeat; */
-   border: 2px solid red;
-   background-color: white;
+   margin-bottom: 95px;
+   /* border: 2px solid red; */
+   /* background-color: white; */
 }
 
 div {
