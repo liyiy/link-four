@@ -5,18 +5,21 @@ document.addEventListener("DOMContentLoaded", () => {
    canvas.height = 800;
    const context = canvas.getContext("2d");
 
-   context.font = "600 30px Arial";
+   // context.clearRect();
+   context.font = "600 40px Impact";
    context.fillStyle = "white";
-   context.fillText("press 1 for two player mode", 195, 50);
-   context.fillText("press 2 for single player mode", 185, 80);
+   context.fillRect(160, 0, 440, 120);
+   context.fillStyle = "lightsalmon";
+   context.fillText("PRESS 1 FOR SINGLE PLAYER", 165, 50);
+   context.fillText("PRESS 2 FOR TWO PLAYERS", 170, 100);
 
 
    addEventListener('keydown', function(e) {
       switch(e.keyCode) {
-         case 49: 
+         case 50: 
             twoPlayerMode();
             break;
-         case 50:
+         case 49:
             aiMode();
             break;
          default:
@@ -183,13 +186,15 @@ document.addEventListener("DOMContentLoaded", () => {
          dropToken(board, column, offsetTop, currPlayer);
           
          if (isWin(board, currPlayer)) {
-            context.font = "600 30px Arial";
-            context.fillStyle = "white";
-            context.fillText(`${currPlayer} wins : )`, 300, 100);
+            context.font = "600 40px Impact";
+            context.fillStyle = "darkgreen";
+            context.fillRect(250, 45, 240, 60);
+            context.fillStyle = `${currPlayer}`;
+            context.fillText(`${currPlayer} WINS :)`, 255, 90);
          } else if (isTie(board)) {
             context.font = "600 30px Arial";
             context.fillStyle = "white";
-            context.fillText("Tie! : (", 350, 100);
+            context.fillText("Tie! :(", 350, 100);
          }
          console.log(board);
       };
