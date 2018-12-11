@@ -33,6 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
    };
 
    const drawToken = (row, column, offsetTop, color) => {
+  
       let x;
       let y;
 
@@ -83,6 +84,7 @@ document.addEventListener("DOMContentLoaded", () => {
          }
       }
    };
+
 
    const isWin = (board, token) => {
       // horizontal win 
@@ -155,6 +157,7 @@ document.addEventListener("DOMContentLoaded", () => {
          let y = event.clientY;
          offsetLeft = canvas.offsetLeft + 70;
          offsetTop = canvas.offsetTop + 160;
+         let row;
 
          if (currPlayer === "red") {
             currPlayer = "yellow";
@@ -178,6 +181,7 @@ document.addEventListener("DOMContentLoaded", () => {
             column = 6;
          }
          dropToken(board, column, offsetTop, currPlayer);
+          
          if (isWin(board, currPlayer)) {
             context.font = "600 30px Arial";
             context.fillStyle = "white";
@@ -206,21 +210,37 @@ document.addEventListener("DOMContentLoaded", () => {
       }
    };
 
+   const possibleDropToken= (board, column, color) => {
+      for (let i = 5; i >= 0; i--) {
+         if (board[i][column] === null) {
+            board[i][column] = color;
+            break;
+         }
+      }
+   };
+
    const computerMove = (board, offsetTop) => {
-      // let column;
-      // let boardDup = deepDup(board);
+
       let winningCol;
 
-      for (let column = 0; column < 3; column++) {
+      for (let column = 0; column < 7; column++) {
          let boardDup = deepDup(board);
-         dropToken(boardDup, column, offsetTop, "yellow");
-         if (isWin(boardDup)) {
+         possibleDropToken(boardDup, column, "yellow");
+         if (isWin(boardDup, "yellow")) {
             winningCol = column;
-         } 
+            break;
+         } else {
+            let boardDup2 = deepDup(board);
+            possibleDropToken(boardDup2, column, "red");
+            if (isWin(boardDup2, "red")) {
+               winningCol = column;
+               break;
+            }
+         }
       }
 
       if (winningCol) {
-         dropToken(board, winningCol, offsetTop, "yellow")
+         dropToken(board, winningCol, offsetTop, "yellow");
       } else {
          dropToken(board, Math.floor(Math.random() * 7), offsetTop, "yellow");
       }
@@ -266,7 +286,10 @@ document.addEventListener("DOMContentLoaded", () => {
          if (isWin(board, currPlayer)) {
             context.font = "600 30px Arial";
             context.fillStyle = "white";
-            context.fillText(`${currPlayer} wins : )`, 300, 100);
+            context.fillText("You win : )", 300, 100);
+         } else if (isWin(board, "yellow")) {
+            
+            context.fillText("You lose : (", 300, 100);
          } else if (isTie(board)) {
             context.font = "600 30px Arial";
             context.fillStyle = "white";
