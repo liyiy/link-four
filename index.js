@@ -187,13 +187,13 @@ document.addEventListener("DOMContentLoaded", () => {
          dropToken(board, column, offsetTop, currPlayer);
           
          if (isWin(board, currPlayer)) {
-            context.font = "600 40px Monospace";
-            context.fillStyle = `${currPlayer}`;
-            context.fillText(`${currPlayer} wins : )`, 255, 700);
+            context.font = "600 50px Impact";
+            context.fillStyle = "#3f6db5";
+            context.fillText(`${currPlayer} wins`, 270, 750);
          } else if (isTie(board)) {
-            context.font = "600 30px Monospace";
-            context.fillStyle = "white";
-            context.fillText("Tie! :(", 350, 100);
+            context.font = "600 50px Impact";
+            context.fillStyle = "#3f6db5";
+            context.fillText("Tie!", 270, 750);
          }
          console.log(board);
       };
