@@ -6,12 +6,12 @@ document.addEventListener("DOMContentLoaded", () => {
    const context = canvas.getContext("2d");
 
    // context.clearRect();
-   context.font = "600 40px Impact";
-   context.fillStyle = "white";
-   context.fillRect(160, 0, 440, 120);
-   context.fillStyle = "lightsalmon";
-   context.fillText("PRESS 1 FOR SINGLE PLAYER", 165, 50);
-   context.fillText("PRESS 2 FOR TWO PLAYERS", 170, 100);
+   // context.font = "600 40px Impact";
+   // context.fillStyle = "white";
+   // context.fillRect(160, 0, 440, 120);
+   // context.fillStyle = "lightsalmon";
+   // context.fillText("PRESS 1 FOR SINGLE PLAYER", 165, 50);
+   // context.fillText("PRESS 2 FOR TWO PLAYERS", 170, 100);
 
 
    addEventListener('keydown', function(e) {
@@ -150,7 +150,9 @@ document.addEventListener("DOMContentLoaded", () => {
    const twoPlayerMode = () => {
       context.clearRect(0, 0, canvas.width, canvas.height);
       context.drawImage(img, canvas.width/2 - img.width/2, canvas.height/2 - img.height/2);
-
+      context.font = "600 40px Impact";
+      context.fillStyle = "lightsalmon";
+      context.fillText("TWO PLAYER MODE", 240, 100);
       let column;
       let board = newBoard();
       let currPlayer = "red";
@@ -160,7 +162,6 @@ document.addEventListener("DOMContentLoaded", () => {
          let y = event.clientY;
          offsetLeft = canvas.offsetLeft + 70;
          offsetTop = canvas.offsetTop + 160;
-         let row;
 
          if (currPlayer === "red") {
             currPlayer = "yellow";
@@ -257,7 +258,9 @@ document.addEventListener("DOMContentLoaded", () => {
       console.log("everything sucks");
       context.clearRect(0, 0, canvas.width, canvas.height);
       context.drawImage(img, canvas.width / 2 - img.width / 2, canvas.height / 2 - img.height / 2);
-
+      context.font = "600 40px Impact";
+      context.fillStyle = "lightsalmon";
+      context.fillText("SINGLE PLAYER MODE", 225, 100);
 
       let column;
       let board = newBoard();
@@ -287,7 +290,9 @@ document.addEventListener("DOMContentLoaded", () => {
          }
 
          dropToken(board, column, offsetTop, currPlayer);
-         computerMove(board, offsetTop);
+         setTimeout(() => computerMove(board, offsetTop), 300);
+
+         // computerMove(board, offsetTop);
          if (isWin(board, currPlayer)) {
             context.font = "600 30px Arial";
             context.fillStyle = "white";

@@ -1,9 +1,14 @@
 
 html {
-   background: url("https://ak3.picdn.net/shutterstock/videos/13851653/thumb/1.jpg");
+   background: url("https://i.pinimg.com/originals/50/ff/c8/50ffc8da808e31a16eed77b741afe480.gif");
    background-size: cover;
    background-position-x: center;
 }
+
+/* body {
+   display: flex;
+   justify-content: space-between;
+} */
 
 #game-canvas {
    /* background-image: url('./Connect4Board.png'); */
@@ -15,4 +20,21 @@ html {
 
 div {
    text-align: center;
+}
+
+.how-to {
+   font-size: 33px;
+   font-weight: 800;
+   font-family: monospace;
+   color: dodgerblue;
+}
+
+
+.about-me {
+   position: absolute;
+   border: 2px solid white;
+   background-color: white;
+   opacity: .7;
+   width: 300px;
+   height: 640px;
 }
