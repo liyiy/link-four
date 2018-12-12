@@ -187,13 +187,11 @@ document.addEventListener("DOMContentLoaded", () => {
          dropToken(board, column, offsetTop, currPlayer);
           
          if (isWin(board, currPlayer)) {
-            context.font = "600 40px Impact";
-            context.fillStyle = "darkgreen";
-            context.fillRect(250, 45, 240, 60);
+            context.font = "600 40px Monospace";
             context.fillStyle = `${currPlayer}`;
-            context.fillText(`${currPlayer} WINS :)`, 255, 90);
+            context.fillText(`${currPlayer} wins : )`, 255, 700);
          } else if (isTie(board)) {
-            context.font = "600 30px Arial";
+            context.font = "600 30px Monospace";
             context.fillStyle = "white";
             context.fillText("Tie! :(", 350, 100);
          }
@@ -251,11 +249,15 @@ document.addEventListener("DOMContentLoaded", () => {
          dropToken(board, Math.floor(Math.random() * 7), offsetTop, "yellow");
       }
 
+      if(isWin(board,"yellow")) {
+         context.fillStyle = "#3f6db5";
+         context.fillText("YOU LOST", 300, 700);
+      }
+
    };
 
 
    const aiMode = () => {
-      console.log("everything sucks");
       context.clearRect(0, 0, canvas.width, canvas.height);
       context.drawImage(img, canvas.width / 2 - img.width / 2, canvas.height / 2 - img.height / 2);
       context.font = "600 40px Impact";
@@ -294,16 +296,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
          // computerMove(board, offsetTop);
          if (isWin(board, currPlayer)) {
-            context.font = "600 30px Arial";
-            context.fillStyle = "white";
-            context.fillText("You win : )", 300, 100);
-         } else if (isWin(board, "yellow")) {
-            
-            context.fillText("You lose : (", 300, 100);
+            context.font = "600 40px Impact";
+            context.fillStyle = "#3f6db5";
+            context.fillText("YOU WON", 300, 700);
          } else if (isTie(board)) {
             context.font = "600 30px Arial";
-            context.fillStyle = "white";
-            context.fillText("Tie! : (", 350, 100);
+            context.fillStyle = "#3f6db5";
+            context.fillText("TIE", 350, 700);
          }
          console.log(board);
       };
