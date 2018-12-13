@@ -70,7 +70,6 @@ document.addEventListener("DOMContentLoaded", () => {
          x = 645;
       }
 
-      console.log(x, y);
       context.beginPath();
       context.arc(x, y, 35, 0, 2 * Math.PI);
       context.fillStyle = color;
@@ -195,7 +194,6 @@ document.addEventListener("DOMContentLoaded", () => {
             context.fillStyle = "#3f6db5";
             context.fillText("Tie!", 270, 750);
          }
-         console.log(board);
       };
    };
 
@@ -304,7 +302,6 @@ document.addEventListener("DOMContentLoaded", () => {
             context.fillStyle = "#3f6db5";
             context.fillText("TIE", 350, 700);
          }
-         console.log(board);
       };
    };
 
