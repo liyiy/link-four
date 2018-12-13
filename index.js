@@ -155,6 +155,7 @@ document.addEventListener("DOMContentLoaded", () => {
       let column;
       let board = newBoard();
       let currPlayer = "red";
+      let gameOver = false;
 
       canvas.onclick = function (event) {
          let x = event.clientX;
@@ -189,10 +190,15 @@ document.addEventListener("DOMContentLoaded", () => {
             context.font = "600 50px Impact";
             context.fillStyle = "#3f6db5";
             context.fillText(`${currPlayer} wins`, 270, 750);
+            gameOver = true;
          } else if (isTie(board)) {
             context.font = "600 50px Impact";
             context.fillStyle = "#3f6db5";
             context.fillText("Tie!", 270, 750);
+            gameOver = true;
+         }
+         if (gameOver) {
+            return;
          }
       };
    };
@@ -297,6 +303,7 @@ document.addEventListener("DOMContentLoaded", () => {
             context.font = "600 40px Impact";
             context.fillStyle = "#3f6db5";
             context.fillText("YOU WON", 300, 700);
+            
          } else if (isTie(board)) {
             context.font = "600 30px Arial";
             context.fillStyle = "#3f6db5";
