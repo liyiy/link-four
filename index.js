@@ -161,7 +161,7 @@ document.addEventListener("DOMContentLoaded", () => {
          let x = event.clientX;
          let y = event.clientY;
          offsetLeft = canvas.offsetLeft + 70;
-         offsetTop = canvas.offsetTop + 160;
+         offsetTop = canvas.offsetTop + 100;
 
          if (currPlayer === "red") {
             currPlayer = "yellow";
@@ -277,7 +277,7 @@ document.addEventListener("DOMContentLoaded", () => {
          let y = event.clientY;
 
          offsetLeft = canvas.offsetLeft + 70;
-         offsetTop = canvas.offsetTop + 160;
+         offsetTop = canvas.offsetTop + 100;
 
          if (offsetLeft < x && x < offsetLeft + 70) {
             column = 0;

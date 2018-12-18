@@ -3,12 +3,19 @@ html {
    background: url("https://i.pinimg.com/originals/50/ff/c8/50ffc8da808e31a16eed77b741afe480.gif");
    background-size: cover;
    background-position-x: center;
+   text-align: center;
 }
 
 /* body {
    display: flex;
    justify-content: space-between;
 } */
+h1 {
+   font-size: 40px;
+   color: pink;
+   font-family: monospace;
+
+}
 
 #game-canvas {
    /* background-image: url('./Connect4Board.png'); */
