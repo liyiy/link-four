@@ -161,7 +161,7 @@ document.addEventListener("DOMContentLoaded", () => {
          let x = event.clientX;
          let y = event.clientY;
          offsetLeft = canvas.offsetLeft + 70;
-         offsetTop = canvas.offsetTop + 100;
+         offsetTop = canvas.offsetTop + 70;
 
          if (currPlayer === "red") {
             currPlayer = "yellow";
@@ -184,8 +184,12 @@ document.addEventListener("DOMContentLoaded", () => {
          } else if (offsetLeft + 540 < x && x < offsetLeft + 610) {
             column = 6;
          }
+         if (gameOver === false) {
          dropToken(board, column, offsetTop, currPlayer);
-          
+         } else {
+            return;
+         }
+
          if (isWin(board, currPlayer)) {
             context.font = "600 50px Impact";
             context.fillStyle = "#3f6db5";
@@ -196,11 +200,8 @@ document.addEventListener("DOMContentLoaded", () => {
             context.fillStyle = "#3f6db5";
             context.fillText("Tie!", 270, 750);
             gameOver = true;
-         }
-         if (gameOver) {
-            return;
-         }
-      };
+         } 
+      };  
    };
 
    // AI MODE 
@@ -277,7 +278,7 @@ document.addEventListener("DOMContentLoaded", () => {
          let y = event.clientY;
 
          offsetLeft = canvas.offsetLeft + 70;
-         offsetTop = canvas.offsetTop + 100;
+         offsetTop = canvas.offsetTop + 70;
 
          if (offsetLeft < x && x < offsetLeft + 70) {
             column = 0;
