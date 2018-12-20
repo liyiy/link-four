@@ -272,6 +272,7 @@ document.addEventListener("DOMContentLoaded", () => {
       let column;
       let board = newBoard();
       let currPlayer = "red";
+      let gameOver = false;
 
       canvas.onclick = function(event) {
          let x = event.clientX;
@@ -296,19 +297,23 @@ document.addEventListener("DOMContentLoaded", () => {
             column = 6;
          }
 
-         dropToken(board, column, offsetTop, currPlayer);
-         setTimeout(() => computerMove(board, offsetTop), 300);
-
+         if (gameOver === false) {
+            dropToken(board, column, offsetTop, currPlayer);
+            setTimeout(() => computerMove(board, offsetTop), 300);
+         } else {
+            return;
+         }
          // computerMove(board, offsetTop);
          if (isWin(board, currPlayer)) {
             context.font = "600 40px Impact";
             context.fillStyle = "#3f6db5";
             context.fillText("YOU WON", 300, 700);
-            
+            gameOver = true;
          } else if (isTie(board)) {
             context.font = "600 30px Arial";
             context.fillStyle = "#3f6db5";
             context.fillText("TIE", 350, 700);
+            gameOver = true;
          }
       };
    };
