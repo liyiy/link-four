@@ -230,26 +230,26 @@ document.addEventListener("DOMContentLoaded", () => {
 
    const computerMove = (board, offsetTop) => {
 
-      let winningCol;
+      let moveCol;
 
       for (let column = 0; column < 7; column++) {
          let boardDup = deepDup(board);
          possibleDropToken(boardDup, column, "yellow");
          if (isWin(boardDup, "yellow")) {
-            winningCol = column;
+            moveCol = column;
             break;
          } else {
             let boardDup2 = deepDup(board);
             possibleDropToken(boardDup2, column, "red");
             if (isWin(boardDup2, "red")) {
-               winningCol = column;
+               moveCol = column;
                break;
             }
          }
       }
 
-      if (winningCol) {
-         dropToken(board, winningCol, offsetTop, "yellow");
+      if (moveCol) {
+         dropToken(board, moveCol, offsetTop, "yellow");
       } else {
          dropToken(board, Math.floor(Math.random() * 7), offsetTop, "yellow");
       }
