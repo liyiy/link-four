@@ -1,4 +1,6 @@
 # Link Four
+[live](https://liyiy.github.io/link-four/)
+
 ![link-four-game](https://i.imgur.com/XxMm9p6.png)
 ## About 
 Link Four is a browser based replication of the classic game Connect Four. There are two modes - single and multiplayer. 
