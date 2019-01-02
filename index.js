@@ -254,7 +254,7 @@ document.addEventListener("DOMContentLoaded", () => {
          dropToken(board, Math.floor(Math.random() * 7), offsetTop, "yellow");
       }
 
-      if(isWin(board,"yellow")) {
+      if (isWin(board, "yellow")) {
          context.fillStyle = "#3f6db5";
          context.fillText("YOU LOST", 300, 700);
       }
@@ -297,23 +297,40 @@ document.addEventListener("DOMContentLoaded", () => {
             column = 6;
          }
 
+        
+         // computerMove(board, offsetTop);
+         // if (isWin(board, currPlayer)) {
+         //    context.font = "600 40px Impact";
+         //    context.fillStyle = "#3f6db5";
+         //    context.fillText("YOU WON", 300, 700);
+         //    gameOver = true;
+         // } else if (isWin(board, "yellow")) {
+         //    context.fillStyle = "#3f6db5";
+         //    context.fillText("YOU LOST", 300, 700);
+         //    gameOver = true;
+         // } else if (isTie(board)) {
+         //    context.font = "600 30px Arial";
+         //    context.fillStyle = "#3f6db5";
+         //    context.fillText("TIE", 350, 700);
+         //    gameOver = true;
+         // }
+
          if (gameOver === false) {
             dropToken(board, column, offsetTop, currPlayer);
+            if (isWin(board, currPlayer)) {
+               context.font = "600 40px Impact";
+               context.fillStyle = "#3f6db5";
+               context.fillText("YOU WON", 300, 700);
+               gameOver = true;
+               return;
+            } 
+            if (isWin(board, "yellow")) {
+               context.fillStyle = "#3f6db5";
+               context.fillText("YOU LOST", 300, 700);
+               gameOver = true;
+               return;
+            }
             setTimeout(() => computerMove(board, offsetTop), 300);
-         } else {
-            return;
-         }
-         // computerMove(board, offsetTop);
-         if (isWin(board, currPlayer)) {
-            context.font = "600 40px Impact";
-            context.fillStyle = "#3f6db5";
-            context.fillText("YOU WON", 300, 700);
-            gameOver = true;
-         } else if (isTie(board)) {
-            context.font = "600 30px Arial";
-            context.fillStyle = "#3f6db5";
-            context.fillText("TIE", 350, 700);
-            gameOver = true;
          }
       };
    };
