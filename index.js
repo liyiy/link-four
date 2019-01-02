@@ -316,6 +316,10 @@ document.addEventListener("DOMContentLoaded", () => {
          // }
 
          if (gameOver === false) {
+            if (isWin(board, "yellow")) {
+               gameOver = true;
+               return;
+            }
             dropToken(board, column, offsetTop, currPlayer);
             if (isWin(board, currPlayer)) {
                context.font = "600 40px Impact";
@@ -324,12 +328,7 @@ document.addEventListener("DOMContentLoaded", () => {
                gameOver = true;
                return;
             } 
-            if (isWin(board, "yellow")) {
-               context.fillStyle = "#3f6db5";
-               context.fillText("YOU LOST", 300, 700);
-               gameOver = true;
-               return;
-            }
+            
             setTimeout(() => computerMove(board, offsetTop), 300);
          }
       };
