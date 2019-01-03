@@ -303,7 +303,7 @@ document.addEventListener("DOMContentLoaded", () => {
                gameOver = true;
                return;
             }
-            setTimeout(() => dropToken(board, column, offsetTop, currPlayer), 100);
+            dropToken(board, column, offsetTop, currPlayer);
             if (isWin(board, currPlayer)) {
                context.font = "600 40px Impact";
                context.fillStyle = "#3f6db5";
@@ -312,7 +312,7 @@ document.addEventListener("DOMContentLoaded", () => {
                return;
             } 
             
-            setTimeout(() => computerMove(board, offsetTop), 100);
+            computerMove(board, offsetTop);
          }
       };
    };
