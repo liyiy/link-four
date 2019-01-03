@@ -297,30 +297,13 @@ document.addEventListener("DOMContentLoaded", () => {
             column = 6;
          }
 
-        
-         // computerMove(board, offsetTop);
-         // if (isWin(board, currPlayer)) {
-         //    context.font = "600 40px Impact";
-         //    context.fillStyle = "#3f6db5";
-         //    context.fillText("YOU WON", 300, 700);
-         //    gameOver = true;
-         // } else if (isWin(board, "yellow")) {
-         //    context.fillStyle = "#3f6db5";
-         //    context.fillText("YOU LOST", 300, 700);
-         //    gameOver = true;
-         // } else if (isTie(board)) {
-         //    context.font = "600 30px Arial";
-         //    context.fillStyle = "#3f6db5";
-         //    context.fillText("TIE", 350, 700);
-         //    gameOver = true;
-         // }
 
          if (gameOver === false) {
             if (isWin(board, "yellow")) {
                gameOver = true;
                return;
             }
-            dropToken(board, column, offsetTop, currPlayer);
+            setTimeout(() => dropToken(board, column, offsetTop, currPlayer), 100);
             if (isWin(board, currPlayer)) {
                context.font = "600 40px Impact";
                context.fillStyle = "#3f6db5";
@@ -329,7 +312,7 @@ document.addEventListener("DOMContentLoaded", () => {
                return;
             } 
             
-            setTimeout(() => computerMove(board, offsetTop), 300);
+            setTimeout(() => computerMove(board, offsetTop), 100);
          }
       };
    };
