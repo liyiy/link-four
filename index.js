@@ -5,14 +5,6 @@ document.addEventListener("DOMContentLoaded", () => {
    canvas.height = 800;
    const context = canvas.getContext("2d");
 
-   // context.clearRect();
-   // context.font = "600 40px Impact";
-   // context.fillStyle = "white";
-   // context.fillRect(160, 0, 440, 120);
-   // context.fillStyle = "lightsalmon";
-   // context.fillText("PRESS 1 FOR SINGLE PLAYER", 165, 50);
-   // context.fillText("PRESS 2 FOR TWO PLAYERS", 170, 100);
-
 
    addEventListener('keydown', function(e) {
       switch(e.keyCode) {
@@ -36,7 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
    };
 
    const drawToken = (row, column, offsetTop, color) => {
-  
+
       let x;
       let y;
 
@@ -194,6 +186,9 @@ document.addEventListener("DOMContentLoaded", () => {
             context.font = "600 50px Impact";
             context.fillStyle = "#3f6db5";
             context.fillText(`${currPlayer} wins`, 270, 750);
+            context.font = "600 30px Impact";
+            context.fillStyle = "lightpink";
+            context.fillText("PRESS 2 TO RESTART", 265, 150);
             gameOver = true;
          } else if (isTie(board)) {
             context.font = "600 50px Impact";
@@ -257,6 +252,9 @@ document.addEventListener("DOMContentLoaded", () => {
       if (isWin(board, "yellow")) {
          context.fillStyle = "#3f6db5";
          context.fillText("YOU LOST", 300, 700);
+         context.font = "600 30px Impact";
+         context.fillStyle = "lightpink";
+         context.fillText("PRESS 1 TO RESTART", 270, 150);
       }
 
    };
@@ -308,6 +306,9 @@ document.addEventListener("DOMContentLoaded", () => {
                context.font = "600 40px Impact";
                context.fillStyle = "#3f6db5";
                context.fillText("YOU WON", 300, 700);
+               context.font = "600 30px Impact";
+               context.fillStyle = "lightpink";
+               context.fillText("PRESS 1 TO RESTART", 270, 150);
                gameOver = true;
                return;
             } 
